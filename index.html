@@ -32,6 +32,7 @@
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/networkgraph.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <style>
     .highcharts-figure, .highcharts-data-table table {
   min-width: 320px; 
@@ -67,7 +68,7 @@
 .highcharts-data-table tr:hover {
   background: #f1f7ff;
 }
-}
+
 </style>
 
     <!-- Font Google -->
@@ -363,8 +364,6 @@
                                         <span class="text-muted"> - </span> Advisor: Dr. Dheerendra Singh (Professor , Dept. of CSE,
                                         CCET) </h6>
                                     <small class="text-muted">MAR, 2021 - Present</small>
-                                    <p class="text-dark pt-15 mb-0">
-        </p>
                                 </div>
                             </div>  
                             <!--item 1-->
@@ -433,15 +432,16 @@
                             </div>
                         </div>
                         <figure class="highcharts-figure">
-                            <div style="margin-top: -50px !important; padding-top: 0px !important;" id="container"></div>
-                          </figure>
+                            <div id="container"></div>
+                        </figure>
+                        
                     </div>
                 </div>
     </div>
 </section>
 
  <!-- Skills -->
- <section id="skills" class="section services ">
+ <section id="skills" class="section services " style="height: 100vh;">
     <div class="container">
         <div class="row mb-50">
             <div class="col-md-12">
@@ -452,82 +452,12 @@
                 
             </div>
         </div>
-        <div class="row">
-            <!-- item -->
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="item">
-                    <div class="row">
-                    <div class="col-sm-6 col-md-3 col-lg-3 ">
-                       <h2 style="font-size: x-large">C</h2>
-                    </div>
-                    <div class="col-sm-6 col-md-3 col-lg-3 ">
-                        <h2 style="font-size: x-large">C++</h2>
-                     </div>
-                     <div class="col-sm-6 col-md-3 col-lg-3 ">
-                        <h2 style="font-size: x-large">Py</h2>
-                     </div>
-                     <div class="col-sm-6 col-md-3 col-lg-3 ">
-                        <h2 style="font-size: x-large">JSL</h2>
-                     </div>
-                    </div>
-                    <div class="content ">
-                        <h5 style="color: #0053A4 !important;" class="text-dark mt-15 mb-10">Programming</h5>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="item">
-                    <div class="row">
-                    <div class="col-sm-6 col-md-4 col-lg-4 ">
-                       <h2 style="font-size: x-large">Angular</h2>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-4 ">
-                        <h2 style="font-size: x-large">React</h2>
-                     </div>
-                     <div class="col-sm-6 col-md-4 col-lg-4 ">
-                        <h2 style="font-size: x-large">SQL</h2>
-                     </div>
-                    </div>
-                    <div class="content ">
-                        <h5 style="color: #0053A4 !important;" class="text-dark mt-15 mb-10">Web Dev</h5>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- item -->
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="item">
-                    <div class="row">
-                     <div class="col-sm-12 col-md-12 col-lg-12 ">
-                        <h2 style="font-size: x-large">Docker</h2>
-                     </div>
-                    </div>
-                    <div class="content ">
-                        <h5 style="color: #0053A4 !important;" class="text-dark mt-15 mb-10">Deployment Tools</h5>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="item">
-                    <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-6 ">
-                       <h2 style="font-size: x-large">Leadership</h2>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6 ">
-                        <h2 style="font-size: x-large">Punctual</h2>
-                     </div>
-                    </div>
-                    <div class="content ">
-                        <h5 style="color: #0053A4 !important;" class="text-dark mt-15 mb-10">Soft Skills</h5>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+      
+        <figure  class="highcharts-figure">
+            <div style="margin-top: -100px !important;" id="container2"></div>
+          </figure>
+        
+
     </div>
 </section>
 
@@ -539,7 +469,7 @@
         <div class="row mb-50">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2 class="text-dark mb-0">Work</h2>
+                    <h2 class="text-dark mb-0"> Previous Work</h2>
                     <p class="text-muted mb-0">Top Projects and Events.</p>
                 </div>
             </div>
@@ -812,8 +742,72 @@
     <div class="loading">
         <div class="circle"></div>
     </div>-->
-    <script>
-       // Add the nodes option through an event call. We want to start with the parent
+   <script>
+       // Make monochrome colors
+var pieColors = (function () {
+    var colors = [],
+        base = Highcharts.getOptions().colors[0],
+        i;
+
+    for (i = 0; i < 10; i += 1) {
+        // Start out with a darkened base color (negative brighten), and end
+        // up with a much brighter color
+        colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+    }
+    return colors;
+}());
+
+// Build the chart
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: ''
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: ''
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            colors: pieColors,
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                distance: -50,
+                filter: {
+                    property: 'percentage',
+                    operator: '>',
+                    value: 4
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Share',
+        data: [
+            { name: 'Research', y: 4 },
+            { name: 'Projects', y: 4 },
+            { name: 'Industry', y: 1 },
+            { name: 'Events', y: 5 },
+            { name: 'Interests', y: 3 },
+            { name: 'Certifications', y: 5 }
+        ]
+    }]
+});
+   </script>
+<script>
+// Add the nodes option through an event call. We want to start with the parent
 // item and apply separate colors to each child element, then the same color to
 // grandchildren.
 Highcharts.addEvent(
@@ -830,9 +824,9 @@ Highcharts.addEvent(
     ) {
       e.options.data.forEach(function (link) {
 
-        if (link[0] === 'Engagement') {
-          nodes['Engagement'] = {
-            id: 'Engagement',
+        if (link[0] === 'Skills') {
+          nodes['Skills'] = {
+            id: 'Skills',
             marker: {
               radius: 20
             }
@@ -859,7 +853,7 @@ Highcharts.addEvent(
   }
 );
 
-Highcharts.chart('container', {
+Highcharts.chart('container2', {
   chart: {
     type: 'networkgraph',
     height: '100%'
@@ -886,37 +880,28 @@ Highcharts.chart('container', {
     },
     id: 'lang-tree',
     data: [
-      ['Engagement', 'Research'],
-      ['Engagement', 'Projects'],
-      ['Engagement', 'Industry'],
-      ['Engagement', 'Events'],
-      ['Engagement', 'Certifications'],
-      ['Engagement', 'Interests'],
-      ['Research','R1'],
-      ['Research','R2'],
-      ['Research','R3'],
-      ['Research','R4'],
-      ['Projects','P1'],
-      ['Projects','P2'],
-      ['Projects','P3'],
-      ['Industry','I1'],
-      ['Events','E1'],
-      ['Events','E2'],
-      ['Events','E3'],
-      ['Events','E4'],
-      ['Events','E5'],
-      ['Interests','Music'],
-      ['Interests','Drawing'],
-      ['Interests','Photo.'],
-      ['Certifications','C1'],
-      ['Certifications','C2'],
-      ['Certifications','C3'],
-      ['Certifications','C4'],
-      ['Certifications','C5']
+      ['Skills', 'Programming'],
+      ['Skills', 'Web dev'],
+      ['Skills', 'Deployment'],
+      ['Skills', 'Others'],
+      ['Skills', 'Soft'],
+      ['Programming','C'],
+      ['Programming','C++'],
+      ['Programming','Python'],
+      ['Programming','JS'],
+      ['Web dev','Angular'],
+      ['Web dev','React'],
+      ['Web dev','MySQL'],
+      ['Web dev','PostgreSQL'],
+      ['Deployment','Docker'],
+      ['Others','MS Office'],
+      ['Others','LaTex'],
+      ['Soft','Leadership'],
+      ['Soft','Punctual']
     ]
   }]
 });
-      </script>
+</script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
