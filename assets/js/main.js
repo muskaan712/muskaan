@@ -1,19 +1,5 @@
 /* -----------------------------------------------
 					Js Main
---------------------------------------------------
-    Template Name: Mariam - Personal Portfolio Template
---------------------------------------------------
-
-Table of Content
-
-	. Preloader
-	. Menu
-    . magnificPopup
-    . Share Media
-    . Testimonials
-	. All Functions
-
- 
 ----------------------------------- */
 (function ($) {
     "use strict";
